@@ -169,7 +169,7 @@ def account(st, **state):
     restriction = state["login"]
     password = state["password"]
 
-    if "login" not in state or restriction == "False":
+    if ("login" not in state or restriction == "False") or ("password" not in state):
         st.warning("Please login with your registered email!")
         return
 
