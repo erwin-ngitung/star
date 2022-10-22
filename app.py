@@ -14,7 +14,7 @@ def sign_up(st, **state):
     placeholder = st.empty()
 
     with placeholder.form("Sign Up"):
-        image = Image.open("images/logo_fhas.png")
+        image = Image.open("images/logo_star.png")
         st1, st2, st3 = st.columns(3)
 
         with st2:
@@ -66,7 +66,7 @@ def login(st, **state):
     try:
         # Insert a form in the container
         with placeholder.form("login"):
-            image = Image.open("images/logo_fhas.png")
+            image = Image.open("images/logo_star.png")
             st1, st2, st3 = st.columns(3)
 
             with st2:
@@ -107,7 +107,7 @@ def login(st, **state):
 
 def report(st, **state):
     # Title
-    image = Image.open("images/logo_fhas.png")
+    image = Image.open("images/logo_star.png")
     st1, st2, st3 = st.columns(3)
 
     with st2:
@@ -156,7 +156,7 @@ def report(st, **state):
 
 def account(st, **state):
     # Title
-    image = Image.open("images/logo_fhas.png")
+    image = Image.open("images/logo_star.png")
     st1, st2, st3 = st.columns(3)
 
     with st2:
