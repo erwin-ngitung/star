@@ -72,7 +72,7 @@ def login(st, **state):
             with st2:
                 st.image(image)
 
-            st.markdown("#### Login FHAS Website")
+            st.markdown("#### Login STAR Website")
             email = st.text_input("Email")
             password = st.text_input("Password", type="password")
             submit = st.form_submit_button("Login")
