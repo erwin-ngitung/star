@@ -105,6 +105,31 @@ def login(st, **state):
         st.error("Please login with your registered email!")
 
 
+def input_data(st, **state):
+    # Title
+    image = Image.open("images/logo_star.png")
+    st1, st2, st3 = st.columns(3)
+
+    with st2:
+        st.image(image)
+
+    st.markdown("<svg width=\"705\" height=\"5\"><line x1=\"0\" y1=\"2.5\" x2=\"705\" y2=\"2.5\" stroke=\"black\" "
+                "stroke-width=\"4\" fill=\"black\" /></svg>", unsafe_allow_html=True)
+    st.markdown("<h3 style=\"text-align:center;\">Input Data</h3>", unsafe_allow_html=True)
+
+    restriction = state["login"]
+
+    if "login" not in state or restriction == "False":
+        st.warning("Please login with your registered email!")
+        return
+
+    uploaded_files = st.file_uploader("Please select your data do you want!",
+                                      accept_multiple_files=True)
+
+    for uploaded_file in uploaded_files:
+        st.success("Your data " + uploaded_file.name + " has been successfully!")
+
+
 def report(st, **state):
     # Title
     image = Image.open("images/logo_star.png")
