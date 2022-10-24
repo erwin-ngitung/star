@@ -302,6 +302,7 @@ app.hide_navigation = True
 app.add_app("Sign Up", sign_up)
 app.add_app("Login", login)
 app.add_app("Input Data", input_data)
+app.add_app("Visualization Data", visualization_data)
 app.add_app("Report", report)
 app.add_app("Account Setting", account)
 app.add_app("Logout", logout)
