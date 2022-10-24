@@ -1,10 +1,13 @@
+import os
+
 from streamlit_multipage import MultiPage
-from utils import check_email, check_account, update_json, replace_json
+from utils import check_email, check_account, update_json, replace_json, change_path_band
 from PIL import Image
 import streamlit as st
 import pandas as pd
 import numpy as np
-import openpyxl as pxl
+import matplotlib.pyplot as plt
+import rasterio
 from sklearn.preprocessing import MinMaxScaler
 import warnings
 warnings.filterwarnings("ignore")
@@ -129,6 +132,41 @@ def input_data(st, **state):
     for uploaded_file in uploaded_files:
         st.success("Your data " + uploaded_file.name + " has been successfully!")
 
+
+def visualization_data(st, **state):
+    # Title
+    image = Image.open("images/logo_star.png")
+    st1, st2, st3 = st.columns(3)
+
+    with st2:
+        st.image(image)
+
+    st.markdown("<svg width=\"705\" height=\"5\"><line x1=\"0\" y1=\"2.5\" x2=\"705\" y2=\"2.5\" stroke=\"black\" "
+                "stroke-width=\"4\" fill=\"black\" /></svg>", unsafe_allow_html=True)
+    st.markdown("<h3 style=\"text-align:center;\">Visualization Data</h3>", unsafe_allow_html=True)
+
+    restriction = state["login"]
+
+    if "login" not in state or restriction == "False":
+        st.warning("Please login with your registered email!")
+        return
+
+    path = "data/lst/LC09_L1TP_124064_20220925_20220925_02_T1"
+    path_file = []
+
+    for paths in os.listdir(path):
+        path_file.append(path + "/" + paths)
+
+    band = change_path_band(path_file)
+
+    kind_of_band = st.selectbox('Please select band do you want!',
+                                band.keys())
+
+    fig, ax = plt.subplots(1, figsize=(12, 10))
+    src = rasterio.open(band[kind_of_band])
+    ax.imshow(src.read(1))
+
+    st.pyplot(fig)
 
 def report(st, **state):
     # Title
