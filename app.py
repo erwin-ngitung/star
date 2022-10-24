@@ -168,6 +168,28 @@ def visualization_data(st, **state):
 
     st.pyplot(fig)
 
+
+def processing_data(st, **state):
+    # Title
+    image = Image.open("images/logo_star.png")
+    st1, st2, st3 = st.columns(3)
+
+    with st2:
+        st.image(image)
+
+    st.markdown("<svg width=\"705\" height=\"5\"><line x1=\"0\" y1=\"2.5\" x2=\"705\" y2=\"2.5\" stroke=\"black\" "
+                "stroke-width=\"4\" fill=\"black\" /></svg>", unsafe_allow_html=True)
+    st.markdown("<h3 style=\"text-align:center;\">Processing Data</h3>", unsafe_allow_html=True)
+
+    restriction = state["login"]
+
+    if "login" not in state or restriction == "False":
+        st.warning("Please login with your registered email!")
+        return
+
+
+
+
 def report(st, **state):
     # Title
     image = Image.open("images/logo_star.png")
@@ -303,6 +325,7 @@ app.add_app("Sign Up", sign_up)
 app.add_app("Login", login)
 app.add_app("Input Data", input_data)
 app.add_app("Visualization Data", visualization_data)
+app.add_app('Processing Data', processing_data())
 app.add_app("Report", report)
 app.add_app("Account Setting", account)
 app.add_app("Logout", logout)
