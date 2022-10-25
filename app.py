@@ -197,7 +197,7 @@ def processing_data(st, **state):
 
     image = Image.open(result)
 
-    st.image(image)
+    st.image(image, caption=str('Map ' + method))
 
 
 def report(st, **state):
