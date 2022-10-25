@@ -188,8 +188,6 @@ def processing_data(st, **state):
         return
 
 
-
-
 def report(st, **state):
     # Title
     image = Image.open("images/logo_star.png")
