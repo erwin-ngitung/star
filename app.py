@@ -187,6 +187,18 @@ def processing_data(st, **state):
         st.warning("Please login with your registered email!")
         return
 
+    method = st.selectbox('Please select your method do you want!',
+                          ['LST',
+                           'NDWI',
+                           'NDVI',
+                           'SWIR'])
+
+    result = "data/lst/map_lst.png"
+
+    image = Image.open(result)
+
+    st.image(image)
+
 
 def report(st, **state):
     # Title
